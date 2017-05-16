@@ -1,10 +1,29 @@
 {
-  "name": "Acu-web-app",
+  "name": "acu-web-app",
   "version": "1.0.0",
-  "dependencies":
-  {
+  "dependencies": {
     "express": "~4.0.0",
     "mysql": "*",
     "ejs": "~1.0.0"
-  }
+  },
+  "scripts": {
+    "start": "node server.js"
+  },
+  "description": "Herramientas para practicantes de MTC",
+  "main": "server.js",
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/acalpixca/Acu-web-app.git"
+  },
+  "keywords": [
+    "mtc",
+    "acupuntura"
+  ],
+  "author": "Eva Sanchez Guerrero <acalpixca@gmail.com> (http://www.techmex.es)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/acalpixca/Acu-web-app/issues"
+  },
+  "homepage": "https://github.com/acalpixca/Acu-web-app#readme"
 }
