@@ -1,5 +1,7 @@
-var metodoSAAM=require('../../sintomas/metodoSAAM');
-var Organo=require('../../sintomas/organo');
+//var metodoSAAM=require('../../sintomas/metodoSAAM');
+//var Organo=require('../../sintomas/organo');
+var acuLogic=require('acu-logic');
+
 module.exports = function(app)
 {
      app.get('/',function(req,res){
@@ -19,7 +21,8 @@ module.exports = function(app)
 		res.render('resultado',{
 			organo: response.organo,
 			tonificarDispersar: response.tonificarDispersar,
-			listaPuntos: metodoSAAM.tratamientoSAAM(Organo.organoPorNombre(response.organo), response.tonificarDispersar)
+			listaPuntos: acuLogic.tratamientoSAAM(acuLogic.Organo.organoPorNombre(response.organo), response.tonificarDispersar)
+			//listaPuntos: metodoSAAM.tratamientoSAAM(Organo.organoPorNombre(response.organo), response.tonificarDispersar)
 			});
 		
 		//res.send('html estatico');
