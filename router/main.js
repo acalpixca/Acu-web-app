@@ -9,14 +9,20 @@ module.exports = function(app)
         res.render('about.html');
     });
 	app.get('/resultado',function(req,res){
-		//var organo   = req.body.organo;  //req.body.organo;
 		response= {
 			organo: req.query.organo,
 			tonificarDispersar: req.query.tonificarDispersar
 		};
-		console.log(response);
-		console.log(metodoSAAM.tratamientoSAAM(Organo.organoPorNombre(response.organo), response.tonificarDispersar));
-		res.send('Para ' + response.tonificarDispersar + ' el &oacute;rgano ' + response.organo + ':<br>' + metodoSAAM.tratamientoSAAM(Organo.organoPorNombre(response.organo), response.tonificarDispersar)  );
+		//console.log(response);
+		//console.log(metodoSAAM.tratamientoSAAM(Organo.organoPorNombre(response.organo), response.tonificarDispersar));
+		
+		res.render('resultado',{
+			organo: response.organo,
+			tonificarDispersar: response.tonificarDispersar,
+			listaPuntos: metodoSAAM.tratamientoSAAM(Organo.organoPorNombre(response.organo), response.tonificarDispersar)
+			});
+		
+		//res.send('html estatico');
 		//res.end(JSON.stringify(response));
 		});
 }
