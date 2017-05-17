@@ -7,6 +7,10 @@ font-family: sans-serif;
     box-sizing: border-box;
 }
 
+/*h1 {
+	font-family: sans-serif;
+	font-size: 10px;
+}*/
  /* For mobile phones: */
 [class*="col-"] {
     width: 100%;
@@ -54,6 +58,7 @@ font-family: sans-serif;
     display: block;
 }
 
+/*
 .favoDitos
 {
 color:red;
@@ -74,7 +79,7 @@ font-size: 11px;
 /*position:absolute;
 top:100px;
 left:5%;
-width:75%; */
+width:75%; 
 }
 
 .categorylist
@@ -97,7 +102,7 @@ overflow: auto;
 {
   /*position:relative;
   top:0%;
-  left:70%; */
+  left:70%; 
   color:magenta;
 }
 .subheader
@@ -105,7 +110,7 @@ overflow: auto;
 /*position:absolute;
 top:70px;
 left:5%;
-overflow: auto;*/
+overflow: auto;
 }
 
 .link
@@ -146,3 +151,4 @@ ul.listanostyle
 {
 list-style-type: none;
 }
+*/
