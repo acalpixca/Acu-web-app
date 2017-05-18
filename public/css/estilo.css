@@ -12,8 +12,16 @@ font-family: sans-serif;
 	font-size: 10px;
 }*/
  /* For mobile phones: */
+ 
+ img {
+    width: 100%;
+	max-width: 100%;
+    height: auto;
+}
+
 [class*="col-"] {
     width: 100%;
+	body {font-size: 20px;}
 }
 @media only screen and (min-width: 600px) {
     /* For tablets: */
@@ -29,6 +37,8 @@ font-family: sans-serif;
     .col-m-10 {width: 83.33%;}
     .col-m-11 {width: 91.66%;}
     .col-m-12 {width: 100%;}
+	
+	body {font-size: 10px;}
 }
 @media only screen and (min-width: 768px) {
     /* For desktop: */
@@ -44,6 +54,8 @@ font-family: sans-serif;
     .col-10 {width: 83.33%;}
     .col-11 {width: 91.66%;}
     .col-12 {width: 100%;}
+	
+	body {font-size: 10px;}
 }
 
 [class*="col-"] {
