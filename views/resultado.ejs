@@ -10,7 +10,19 @@
 <h1>Para <%= tonificarDispersar %> el &oacute;rgano <%= organo %>:</h1>
 </div>
 <div class="col-6 col-m-12">
-<p><%= listaPuntos %></p>
+
+<% if (listaPuntos.length) {
+  %><ul class="enumeraPuntos">
+    <% listaPuntos.forEach((punto) => {
+      %>
+        <li><%= punto %></li>
+      <%
+    }) %>
+  </ul><%
+} %>
+
+
+<!-- <p><%= listaPuntos %></p> -->
 <a href="/">Volver</a>
 </div>
 <div class="col-6 col-m-12">
