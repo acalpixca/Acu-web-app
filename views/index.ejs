@@ -7,26 +7,15 @@
 </head>
 <body>
 <div class="col-12 col-m-12">
-<h1>Para <%= tonificarDispersar %> el &oacute;rgano <%= organo %>:</h1>
+<h1>针灸 Herramientas para el profesional de la Medicina Tradicional China</h1>
 </div>
 <div class="col-6 col-m-12">
-
-<% if (listaPuntos.length) {
-  %><ul class="enumeraPuntos">
-    <% listaPuntos.forEach((punto) => {
-      %>
-        <li><%= punto %></li>
-      <%
-    }) %>
-  </ul><%
-} %>
-
-
-<!-- <p><%= listaPuntos %></p> -->
-<a href="/">Volver</a>
+<p><a href="calculadoraSaam">Calculadora de puntos SaAm</a></p>
+<p><a href="calculadoraSol">Calculadora de hora solar</a></p>
 </div>
 <div class="col-6 col-m-12">
-<p>(M&aacute;s informaci&oacute;n sobre el m&eacute;todo SAAM aqu&iacute;)</p>
+<!-- <% include saamLateral.ejs %> -->
+<p>Aqu&iacute; una breve rese&ntilde;a de por qu&eacute; estoy haciendo esto.</p>
 </div>
 </body>
 </html>

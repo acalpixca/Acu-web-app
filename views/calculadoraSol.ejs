@@ -1,0 +1,26 @@
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" type="text/css" href= "/css/estilo.css">
+<link href="/assets/images/taiji2000x2000.ico" rel="icon" type="image/x-icon" />
+<meta charset="UTF-8"/>
+	<!-- this is needed for Google Maps functionality -->
+	<script src="http://maps.google.com/maps/api/js?key=AIzaSyApRcEO1uPFcDY7jrS-4aUaChQ8_K7xG34&sensor=true"></script>
+	<!-- these two are needed for jQuery stuff to work -->
+	<script type="text/javascript" src="/js/jQuery/jquery.min.js"></script>
+	<script type="text/javascript" src="/js/jQuery/jquery-ui.min.js"></script>
+	<!-- end comment -->
+	<script type='text/javascript' src="js/googleMapsFunctionality.js"></script>
+</head>
+<body>
+<div class="col-12 col-m-12">
+<h1>日 Calculadora de hora solar</h1>
+</div>
+<div class="col-6 col-m-12" id="mapCanvas">
+</div>
+<div class="col-6 col-m-12">
+<% include solLateral.ejs %>
+<p><a href="/">Volver a la p&aacute;gina principal</a></p>
+</div>
+</body>
+</html>

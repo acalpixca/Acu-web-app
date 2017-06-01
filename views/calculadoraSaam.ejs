@@ -10,7 +10,7 @@
 <h1>Calculadora de puntos por el m&eacute;todo SAAM</h1>
 </div>
 <div class="col-6 col-m-12">
-<form name="calculadoraSAAM" action="/resultado" method="GET">
+<form name="calculadoraSAAM" action="/resultadoSaam" method="GET">
 <select name="organo">
     <option value="corazon">Coraz&oacute;n</option>
     <option value="id">Intestino delgado</option>
@@ -30,9 +30,10 @@
 <input type="radio" name="tonificarDispersar" value="dispersar">Dispersar<br>
 <input type="submit" value="Calcular">
 </form>
+<p><a href="/">Volver a la p&aacute;gina principal</a></p>
 </div>
 <div class="col-6 col-m-12">
-<p>Basado en el antiguo m&eacute;todo coreano SAAM, que solamente utiliza los 60 puntos Shu antiguos.</p>
+<% include saamLateral.ejs %>
 </div>
 </body>
 </html>

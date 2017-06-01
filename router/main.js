@@ -5,12 +5,21 @@ var acuLogic=require('acu-logic');
 module.exports = function(app)
 {
      app.get('/',function(req,res){
-        res.render('index.html')
+        res.render('index.ejs')
      });
      app.get('/about',function(req,res){
         res.render('about.html');
     });
-	app.get('/resultado',function(req,res){
+	
+	app.get('/calculadoraSaam',function(req,res){
+        res.render('calculadoraSaam.ejs');
+    });
+	
+	app.get('/calculadoraSol',function(req,res){
+        res.render('calculadoraSol.ejs');
+    });
+	
+	app.get('/resultadoSaam',function(req,res){
 		response= {
 			organo: req.query.organo,
 			tonificarDispersar: req.query.tonificarDispersar
@@ -18,7 +27,7 @@ module.exports = function(app)
 		//console.log(response);
 		//console.log(metodoSAAM.tratamientoSAAM(Organo.organoPorNombre(response.organo), response.tonificarDispersar));
 		
-		res.render('resultado',{
+		res.render('resultadoSaam',{
 			organo: response.organo,
 			tonificarDispersar: response.tonificarDispersar,
 			listaPuntos: acuLogic.tratamientoSAAM(acuLogic.Organo.organoPorNombre(response.organo), response.tonificarDispersar)
