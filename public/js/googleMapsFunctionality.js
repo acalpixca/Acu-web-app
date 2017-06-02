@@ -235,8 +235,9 @@ function creaGoogleMap(){
 	//alert('voy a crear el google map ');
 	// primero creo todos los elementos html que estan en indexMap.html, igualitos.
 	
-	// $('body').append('<div id="wholebodymap" class="transicion3"></div>'); <-- este es el original y funciona bien a pagina completa
+	 //$('body').append('<div id="wholebodymap" class="transicion3"></div>'); //<-- este es el original y funciona bien a pagina completa
 	
+	//$('div#mapCanvas').css({height:'100%'});
 	$('div#mapCanvas').append('<div id="wholebodymap" class="transicion3"></div>');
 	
 	$('#wholebodymap').append('<div id="map"></div>');
