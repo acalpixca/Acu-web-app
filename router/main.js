@@ -37,4 +37,21 @@ module.exports = function(app)
 		//res.send('html estatico');
 		//res.end(JSON.stringify(response));
 		});
+		
+	app.get('/resultadoSol', function(req,res) {
+		response = {
+			hora: req.query.hora,
+			dia: req.query.dia,
+			latitud: req.query.latitud,
+			longitud: req.query.longitud
+		};
+		res.render('resultadoSol', {
+			hora:response.hora,
+			dia:response.dia,
+			latitud:response.latitud,
+			longitud:response.longitud
+		}); 
+		
+		//res.render('about.html');
+	});
 }

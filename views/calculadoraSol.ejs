@@ -16,13 +16,24 @@
 <body>
 <div class="col-12 col-m-12">
 <h1>日 Calculadora de hora solar</h1>
-</div
+</div>
 <div class="row">
 <div class="col-6 col-m-12" id="mapCanvas"  style="height:40pc;" >
 </div>
 <div class="col-6 col-m-12">
 <% include solLateral.ejs %>
 <p><a href="/">Volver a la p&aacute;gina principal</a></p>
+</div>
+<div class="row">
+<!-- aquí pon el form para coger la fecha -->
+<form id="calculadoraSol" name="calculadoraSol" action="/resultadoSol" method="GET">
+<!-- estos inputs hidden serán manipulados por jQuery en googleMapsFunctionality.js para que contengan la longitud y latitud seleccionada en el mapa. -->
+	<input type="hidden" name="latitud" value="33"/>
+	<input type="hidden" name="longitud" value="44"/>
+    <input type="date" name="dia" value="1972-04-03"/><br/>
+    <input type="time" name="hora" value="12:00"/><br/>
+	<input type="submit" value="Calcular">
+</form>
 </div>
 <div style="clear: both;"></div>
 </div>

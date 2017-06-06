@@ -1,63 +1,13 @@
 $(document).ready(function(){
 	
 	creaGoogleMap();
-	/*
-	var docHeight=$(document).height();
-	var docWidth=$(document).width();
-	//console.log('docHeight ' + docHeight + ' docWidth ' + docWidth);
-	
-	var online = navigator.onLine;
-		// if(online)
-	
-	function pintaInterrogantes(){
-		// console.log('entro en pinta interrogantes');
-		var i;
-		var topo=0;
-		var left=0;
-		var width=0;
-		var color="";
-		var fuente="";
-		var par=true;
-		var colores=['red','yellow','green','blue','pink','fuchsia','orange','grey'];
-		var fuentes=['"Times New Roman"','Georgia','Arial','Verdana','Courier','Lucida'];
-		
-		var maxInterrogantes=Math.floor(Math.random()*docWidth/10);
-		console.log('maxINterrogantes ' + maxInterrogantes);
-		$('#wholeCanvasInterrogantes').empty();
-		
-		for (i=0;i<maxInterrogantes;i++) {
-				width=Math.abs(Math.floor(Math.random()*docHeight/4)+20);
-				topo=Math.abs(Math.floor(Math.random()*docHeight)-width);
-				left=Math.abs(Math.floor(Math.random()*docWidth)-width);
-				color=colores[Math.floor(Math.random()*colores.length)];
-				fuente=fuentes[Math.floor(Math.random()*fuentes.length)];
-				par=(Math.floor(Math.random()*10)%2===0);
-				
-				console.log('topo ' + topo + ' left ' + left + ' width ' + width + ' color ' + color + ' fuente ' + fuente + ' par ' + par );
-				if (par){
-					$('#wholeCanvasInterrogantes').append('<div style="position:fixed;font-size:'+width+'px;top:'+ topo+'px;left:'+left+'px;width:'+width+'px;height:auto;color:'+color+';font-family:'+fuente +'">?</div>');
-				}
-				else {
-					$('#wholeCanvasInterrogantes').append('<div style="position:fixed;font-size:'+width+'px;top:'+ topo+'px;left:'+left+'px;width:'+width+'px;height:auto;color:'+color+';font-family:'+fuente+'>&iquest;</div>');
-				}
-		}
-			
-	}
-	
-	
-	var refreshIntervalId = setInterval(pintaInterrogantes, 1000);
-	
-	$('#wholeCanvasInterrogantes').click(function(){
-		clearInterval(refreshIntervalId);
-		
-		if ($('div#wholeCanvasInterrogantes').length){
-			$('div#wholeCanvasInterrogantes').remove();
-			createAirportAnimation();
-		}
-	});
-*/	
+
 });
 
+
+var markers=[];
+	
+	
 // helper functions para montar los mapas
 
 function writeAddressName(latLng) {
@@ -74,14 +24,14 @@ function writeAddressName(latLng) {
         });
       }
 	  
-	  function areLocationsSimilar(loc1,loc2){
-		  // comparamos dos sets de coordenadas, si son suficientemente parecidos true else false
-		  var epsilon=0.00001;
-		  return((Math.abs(loc1.lat-loc2.lat)<epsilon) && (Math.abs(loc1.lng-loc2.lng)<epsilon));
-	  }
+ function areLocationsSimilar(loc1,loc2){
+	// comparamos dos sets de coordenadas, si son suficientemente parecidos true else false
+	var epsilon=0.00001;
+	return((Math.abs(loc1.lat-loc2.lat)<epsilon) && (Math.abs(loc1.lng-loc2.lng)<epsilon));
+}
 	  
-	  function onLocation(latLng){
-		  // si latlong corresponde a una location retornamos el indice el la lista
+function onLocation(latLng){
+	// si latlong corresponde a una location retornamos el indice el la lista
 		  // si no, devolvemos -1
 		  var onLoc=false;
 		  var loc={lat:latLng.lat(),lng:latLng.lng()};
@@ -97,9 +47,9 @@ function writeAddressName(latLng) {
 		  if (onLoc) { return(i);} else { return(-1); }
 	  }
 	  
-	  function mapAllLocations(mapObject){
+/*	  function mapAllLocations(mapObject){
 		  // mapeamos todas las ubicaciones de la lista locations.
-		  // si hay mensaje de amigos en la ubicaciÛn, cambiamos el icono a un sobre
+		  // si hay mensaje de amigos en la ubicaci√≥n, cambiamos el icono a un sobre
 		var userLatLng;
 		var marker;
 		var strIcon; //='images/yellowEnvelope.png' o '';
@@ -127,7 +77,7 @@ function writeAddressName(latLng) {
 			google.maps.event.addListener(marker,'click',function(){
 				mapObject.setZoom(9);
 				mapObject.setCenter(this.getPosition());
-				//console.log("aÒado evento para clicazo en " + myMarker[i].getPosition());
+				//console.log("a√±ado evento para clicazo en " + myMarker[i].getPosition());
 				var markerPosition=this.getPosition();
 				var j=onLocation(markerPosition);
 				if (j>=0) {
@@ -135,7 +85,7 @@ function writeAddressName(latLng) {
 					console.log(locations[onLocation(this.getPosition())].photos);
 					
 					// esta linea de aqui abajo hay que sustituirla por algo asi como....
-					// creaResumenLocation es el callback que se encargar· de crear la pantalla que toca.
+					// creaResumenLocation es el callback que se encargar√° de crear la pantalla que toca.
 					sublocation=locations[onLocation(this.getPosition())].photos;
 					location=locations[onLocation(this.getPosition())];
 					loadScript(folderBase+sublocation,folderName,location,creaResumenLocation);
@@ -145,12 +95,12 @@ function writeAddressName(latLng) {
 					// loadScript(locations[onLocation(this.getPosition())].photos);
 					// --->fin linea a sustituir
 					
-					// esta ˙ltima es la acciÛn que tomamos: cargar la galerÌa con las fotos.
-					// esta ˙ltima la vamos a cambiar sustancialmente, es el enlace entre
-					// la cartografÌa, y la galerÌa.
+					// esta √∫ltima es la acci√≥n que tomamos: cargar la galer√≠a con las fotos.
+					// esta √∫ltima la vamos a cambiar sustancialmente, es el enlace entre
+					// la cartograf√≠a, y la galer√≠a.
 				}
 				else {
-					// el marker no est· en ninguna ubicaciÛn. Referimos a la primera de la matriz.
+					// el marker no est√° en ninguna ubicaci√≥n. Referimos a la primera de la matriz.
 					// por decir algo...
 					//alert(locations[0].name);
 				}
@@ -158,107 +108,124 @@ function writeAddressName(latLng) {
 			
 		}
 	}
+*/
 
-      function geolocationSuccess(position) {
-      //invoked when geolocalization worked. Only difference is that it draws the current position, and a blue circle around it
-		//and it also writes the address, but we'll remove this.
-		var userLatLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-        // Write the formatted address Esta la quito porque no la necesito.
-        //writeAddressName(userLatLng);
+function geolocationSuccess(position) {
+    //invoked when geolocalization worked. Only difference is that it draws the current position, and a blue circle around it
+	//and it also writes the address, but we'll remove this.
+	var userLatLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+    // Write the formatted address Esta la quito porque no la necesito.
+    //writeAddressName(userLatLng);
 
-        var myOptions = {
-          //zoom : 16,
-		  zoom: 2,
-          center : userLatLng,
-          mapTypeId : google.maps.MapTypeId.ROADMAP
-        };
-        // Draw the map
-        var mapObject = new google.maps.Map(document.getElementById("map"), myOptions);
-        // Place the marker
-        new google.maps.Marker({
-          map: mapObject,
-          position: userLatLng
-        });
+/* aqu√≠ un poco de jQuery para enchufar esa latitud y longitud en los input del formulario */
+	$("#calculadoraSol input[name=latitud]").val(position.coords.latitude);
+	$("#calculadoraSol input[name=longitud]").val(position.coords.longitude);
+/* fin de manipular el formulario */
+
+    var myOptions = {
+		//zoom : 16,
+		zoom: 2,
+        center : userLatLng,
+        mapTypeId : google.maps.MapTypeId.ROADMAP
+    };
+    // Draw the map
+    var mapObject = new google.maps.Map(document.getElementById("map"), myOptions);
+    // Place the marker
+    var marker=new google.maps.Marker({
+        map: mapObject,
+        position: userLatLng
+    });
+	markers.push(marker);
+    // Draw a circle around the user position to have an idea of the current localization accuracy
+    /*var circle = new google.maps.Circle({
+        center: userLatLng,
+        radius: position.coords.accuracy,
+        map: mapObject,
+        fillColor: '#0000FF',
+        fillOpacity: 0.5,
+        strokeColor: '#0000FF',
+        strokeOpacity: 1.0
+    });*/
+    //mapObject.fitBounds(circle.getBounds());
+	
+	// Aqu√≠ tenemos que poner el listener de clickazos del mapa.
+
+	google.maps.event.addListener(mapObject, 'click', function(event) {
+		mapZoom = mapObject.getZoom();
+		startLocation = event.latLng;
 		
-		mapAllLocations(mapObject);
-
+		var marker=new google.maps.Marker({
+			map:mapObject,
+			//icon:strIcon, // value depends on locations[i].message===true
+			//zIndex:zIndexInt, // same as above. Envelope always on top
+			position: startLocation				
+		});
 		
-        // Draw a circle around the user position to have an idea of the current localization accuracy
-        var circle = new google.maps.Circle({
-          center: userLatLng,
-          radius: position.coords.accuracy,
-          map: mapObject,
-          fillColor: '#0000FF',
-          fillOpacity: 0.5,
-          strokeColor: '#0000FF',
-          strokeOpacity: 1.0
-        });
-        //mapObject.fitBounds(circle.getBounds());
-      } 
+		if (markers.length>0) {
+			markers[0].setMap(null);
+			markers=[];
+		}
+		markers.push(marker); 
+		
+		console.log(JSON.stringify(startLocation));
+		$("#calculadoraSol input[name=latitud]").val(startLocation.lat);
+		$("#calculadoraSol input[name=longitud]").val(startLocation.lng);
+		// setTimeout(placeMarker, 600);
+	});
+	
+	// fin listener de clickazos del mapa.
+} 
 
 	
-      function geolocationError(positionError) {
-	  //invoked when geolocalization did not work. We still map all the locations on the map and make them clickable
-	  //plus we make the start position our place in Santa
-		console.log("entro en geoLocationError");
-		var userLatLng = {lat:19.244687, lng:-99.076892} ; // casa en Santa
-		var myOptions = {
-		  zoom: 2,
-          center : userLatLng,
-          mapTypeId : google.maps.MapTypeId.ROADMAP
-        };
-        // Draw the map
-        var mapObject = new google.maps.Map(document.getElementById("map"), myOptions);
-        // Place the markers
-		mapAllLocations(mapObject);
-      }
+function geolocationError(positionError) {
+	//invoked when geolocalization did not work. We make the start position our place in Santa y NO ponemos listener de clickazos
+	console.log("entro en geoLocationError");
+	var userLatLng = {lat:19.244687, lng:-99.076892} ; // casa en Santa
+		
+	// y paso esa latitud longitud como valor de los elementos items del formulario
+		
+	$("#calculadoraSol input[name=latitud]").val(userLatLng.lat);
+	$("#calculadoraSol input[name=longitud]").val(userLatLng.lng);
+		 
+	// fin manipulaci√≥n items del form
+	var myOptions = {
+		zoom: 2,
+        center : userLatLng,
+        mapTypeId : google.maps.MapTypeId.ROADMAP
+    };
+    // Draw the map
+    var mapObject = new google.maps.Map(document.getElementById("map"), myOptions);
+}
 
-      function geolocateUser() {
-		  //starting point for mapping stuff
-        // If the browser supports the Geolocation API
-        if (navigator.geolocation)
-        {
-          var positionOptions = {
-            enableHighAccuracy: true,
+
+function geolocateUser() {
+	//starting point for mapping stuff
+    if (navigator.geolocation) { // If the browser supports the Geolocation API
+        var positionOptions = {
+			enableHighAccuracy: true,
             timeout: 10 * 1000 // 10 seconds
-          };
-          navigator.geolocation.getCurrentPosition(geolocationSuccess, geolocationError, positionOptions);
-        }
-        else
-          document.getElementById("error").innerHTML += "Your browser doesn't support the Geolocation API";
-      }
+        };
+        navigator.geolocation.getCurrentPosition(geolocationSuccess, geolocationError, positionOptions);
+    }
+    else {
+        document.getElementById("error").innerHTML += "Tu navegador no soporta el API de geolocalizaci&oacute;n";
+	}
+}
 
 
 // este es el punto de entrada, que tendra que generar los elementos html y hacer las veces de document on load.
 
 function creaGoogleMap(){
-	//alert('voy a crear el google map ');
-	// primero creo todos los elementos html que estan en indexMap.html, igualitos.
 	
-	 //$('body').append('<div id="wholebodymap" class="transicion3"></div>'); //<-- este es el original y funciona bien a pagina completa
-	
-	//$('div#mapCanvas').css({height:'100%'});
 	$('div#mapCanvas').append('<div id="wholebodymap" class="transicion3"></div>');
-	
 	$('#wholebodymap').append('<div id="map"></div>');
 	$('#wholebodymap').append('<p id="error"></p>');
-	
-	//var docWidth=$(document).width();
-	//var docHeight=$(document).height();
 	
 	var docWidth=$('div#mapCanvas').width();
 	var docHeight=$('div#mapCanvas').height();	
 
-	
 	$map=$('div#map');
 	$map.css({'width':docWidth,'height':docHeight});
 	$('div#wholebodygalleryMaps').css({'width':docWidth,'height':docHeight});
 	geolocateUser();
-	$('.close').click(function(){
-		console.log("evento click sobre .cerrar -> me han invocado");
-		$('div#content').empty(); 
-		$('div#wholebodygalleryMaps').css("visibility","hidden");
-	});
-	
-	
 }
