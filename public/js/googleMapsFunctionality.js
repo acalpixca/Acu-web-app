@@ -136,18 +136,7 @@ function geolocationSuccess(position) {
         position: userLatLng
     });
 	markers.push(marker);
-    // Draw a circle around the user position to have an idea of the current localization accuracy
-    /*var circle = new google.maps.Circle({
-        center: userLatLng,
-        radius: position.coords.accuracy,
-        map: mapObject,
-        fillColor: '#0000FF',
-        fillOpacity: 0.5,
-        strokeColor: '#0000FF',
-        strokeOpacity: 1.0
-    });*/
-    //mapObject.fitBounds(circle.getBounds());
-	
+    
 	// Aquí tenemos que poner el listener de clickazos del mapa.
 
 	google.maps.event.addListener(mapObject, 'click', function(event) {
@@ -194,7 +183,42 @@ function geolocationError(positionError) {
         mapTypeId : google.maps.MapTypeId.ROADMAP
     };
     // Draw the map
-    var mapObject = new google.maps.Map(document.getElementById("map"), myOptions);
+    var mapObject = new google.maps.Map(document.getElementById("map"), myOptions);	
+	
+	var marker=new google.maps.Marker({
+        map: mapObject,
+        position: userLatLng
+    });
+	
+
+	markers.push(marker);
+    
+	// Aquí tenemos que poner el listener de clickazos del mapa.
+
+	google.maps.event.addListener(mapObject, 'click', function(event) {
+		mapZoom = mapObject.getZoom();
+		startLocation = event.latLng;
+		
+		var marker=new google.maps.Marker({
+			map:mapObject,
+			//icon:strIcon, // value depends on locations[i].message===true
+			//zIndex:zIndexInt, // same as above. Envelope always on top
+			position: startLocation				
+		});
+		
+		if (markers.length>0) {
+			markers[0].setMap(null);
+			markers=[];
+		}
+		markers.push(marker); 
+		
+		console.log(JSON.stringify(startLocation));
+		$("#calculadoraSol input[name=latitud]").val(startLocation.lat);
+		$("#calculadoraSol input[name=longitud]").val(startLocation.lng);
+		// setTimeout(placeMarker, 600);
+	});
+	
+	// fin listener de clickazos del mapa.
 }
 
 
