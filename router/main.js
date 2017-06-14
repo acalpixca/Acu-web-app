@@ -1,6 +1,7 @@
 //var metodoSAAM=require('../../sintomas/metodoSAAM');
 //var Organo=require('../../sintomas/organo');
 var acuLogic=require('acu-logic');
+var calculadoraSolar=require('calculadora_solar');
 
 module.exports = function(app)
 {
@@ -49,7 +50,8 @@ module.exports = function(app)
 			hora:response.hora,
 			dia:response.dia,
 			latitud:response.latitud,
-			longitud:response.longitud
+			longitud:response.longitud,
+			horaSolar: calculadoraSolar.calculoHoraLocal(response.dia, response.hora, response.longitud)
 		}); 
 		
 		//res.render('about.html');
