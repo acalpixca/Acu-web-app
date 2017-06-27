@@ -6,7 +6,8 @@ var calculadoraSolar=require('calculadora_solar');
 module.exports = function(app)
 {
      app.get('/',function(req,res){
-        res.render('index.ejs')
+        console.log("a ver si carga la pagina index");
+		res.render('index.ejs')
      });
      app.get('/about',function(req,res){
         res.render('about.html');

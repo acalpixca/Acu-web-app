@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "dependencies": {
     "acu-logic": "^1.0.8",
+    "bootstrap": "^3.3.7",
     "calculadora_solar": "^1.0.0",
     "ejs": "~1.0.0",
     "express": "~4.0.0",
