@@ -21,6 +21,10 @@ module.exports = function(app)
         res.render('calculadoraSol.ejs');
     });
 	
+	app.get('/shuAntiguos',function(req,res){
+        res.render('shuAntiguos.ejs');
+    });
+	
 	app.get('/resultadoSaam',function(req,res){
 		response= {
 			organo: req.query.organo,
