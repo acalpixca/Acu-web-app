@@ -7,9 +7,11 @@
 <meta charset="UTF-8"/>
 </head>
 <body>
+<div class="row">
 <div class="col-12 col-m-12">
 <h1>Calculadora de puntos por el m&eacute;todo SAAM</h1>
-</div>
+</div><!-- col -->
+</div> <!-- row -->
 <div class="col-6 col-m-12">
 <form name="calculadoraSAAM" action="/resultadoSaam" method="GET">
 <select name="organo">
@@ -34,9 +36,10 @@
 <input type="submit" value="Calcular">
 </form>
 <p><a href="/">Volver a la p&aacute;gina principal</a></p>
-</div>
+</div> <!-- col -->
 <div class="col-6 col-m-12">
 <% include saamLateral.ejs %>
-</div>
+</div> <!-- col -->
+</div> <!-- row-->
 </body>
 </html>
