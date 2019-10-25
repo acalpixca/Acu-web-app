@@ -2,7 +2,7 @@
   "name": "acu-web-app",
   "version": "1.0.1",
   "dependencies": {
-    "acu-logic": "^1.0.11",
+    "acu-logic": "^1.3.0",
     "bootstrap": "^4.0.0",
     "calculadora_solar": "^1.0.0",
     "ejs": "~>2.5.5",
